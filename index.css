@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  font-family: 'Alan Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  padding-top: 150px;
+  transition: padding-top 0.3s ease;
+}
+
+body.shrink-header {
+  padding-top: 60px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  background-color: rgba(174, 208, 231, 0.5);
+  backdrop-filter: blur(10px);
+  height: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Garante que fique acima do conteúdo */
+  transition: height 0.3s ease;
+}
+
+header.shrink {
+  height: 40px; /* altura menor quando o h1 some */
+}
+
+.nav-wrapper {
+  align-self: flex-end;
+}
+
+nav {
+  background: transparent;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  padding-top: 1px;
+}
+
+nav li {
+  list-style: none;
+}
+
+nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background-color: rgba(91, 139, 226, 0.301);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  opacity: 1;
+}
+
+nav a:hover {
+  text-decoration: none;
+  filter: none;
+  color: rgb(255, 255, 255);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 95px;
+  font-family: 'Alan Sans', sans-serif;
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+header h1.hide {
+  opacity: 0; /* Torna o h1 invisível */
+  pointer-events: none; /* Evita interação quando invisível */
+}
+
+header h1:hover {
+  filter: blur(3px); /* Aplica o blur ao passar o mouse */
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 20px;
+}
+
+#container {
+  display: flex;
+  width: 400vw; /* 4 seções */
+  transition: transform 0.8s ease-in-out; /* Transição mais suave e um pouco mais lenta */
+}
+
+section {
+  width: 100vw;
+  min-height: 100vh; /* Permite alturas personalizadas */
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+/* Alturas personalizadas para seções */
+.about {
+  min-height: 90vh; /* About menor */
+  background: hsl(204, 43%, 68%);
+}
+
+.shop {
+  min-height: 100vh; /* Padrão */
+}
+
+.listen {
+  min-height: 90vh; /* Listen menor */
+}
+
+.arrow-cover-wrapper {
+  position: relative;
+  width: 100%;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-svg-bg {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 150vw; /* seta mais larga, ajuste conforme necessário */
+  height: 550px; /* ajuste conforme necessário */
+  z-index: 1;
+  pointer-events: none;
+  transition: left 0.5s cubic-bezier(.77, 0, .18, 1);
+}
+
+.cover-img {
+  position: relative;
+  z-index: 2;
+  width: 400px;/* ajuste conforme necessário */
+  height: fit-content;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
